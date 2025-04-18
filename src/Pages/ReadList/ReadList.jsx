@@ -5,6 +5,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { getStoredBook } from "../../Utility/addToDB";
 import Book from "../Book/Book";
+
 const ReadList = () => {
   const [readList, setReadList] = useState([]);
   const [sort, setSort] = useState("");
@@ -24,9 +25,14 @@ const ReadList = () => {
     setSort(type);
 
     if (type === "pages") {
-      const sortedByPage = [...readList];
+      const sortedByPage = [...readList].sort(
+        (a, b) => a.totalPages - b.totalPages
+      );
+      setReadList(sortedByPage);
     }
     if (type === "rating") {
+      const sortedByRating = [...readList].sort((a, b) => a.rating - b.rating);
+      setReadList(sortedByRating);
     }
   };
   return (

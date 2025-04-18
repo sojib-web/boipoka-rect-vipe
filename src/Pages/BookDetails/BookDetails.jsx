@@ -2,7 +2,10 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
 import { addToStoredDB } from "../../Utility/addToDB";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
+const MySwal = withReactContent(Swal);
 const BookDetails = () => {
   const { bookId } = useParams();
   const bookIdParseInt = parseInt(bookId);
@@ -23,6 +26,16 @@ const BookDetails = () => {
 
   const handleMarkAsRead = (bookId) => {
     addToStoredDB(bookId);
+
+    MySwal.fire({
+      title: <p>Hello World</p>,
+      didOpen: () => {
+        // `MySwal` is a subclass of `Swal` with all the same instance & static methods
+        MySwal.showLoading();
+      },
+    }).then(() => {
+      return MySwal.fire(<p>Shorthand works too</p>);
+    });
   };
 
   return (
