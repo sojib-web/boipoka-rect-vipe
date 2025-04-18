@@ -8,14 +8,16 @@ const Navbar = () => {
         <a className="btn btn-ghost text-xl">Boi Poka</a>
       </div>
 
-      <div className="navbar-center hidden lg:flex">
+      <div className="navbar-center  lg:flex">
         <Link className="btn btn-ghost text-xl" to="/">
           Home
         </Link>
         <Link className="btn btn-ghost text-xl" to="/about">
           About
         </Link>
-        <a className="btn btn-ghost text-xl">Pages to Read</a>
+        <Link className="btn btn-ghost text-xl" to="/readList">
+          Read List
+        </Link>
       </div>
       <div className="navbar-end">
         <button className="btn bg-[#23BE0A] text-white rounded-2xl ">
